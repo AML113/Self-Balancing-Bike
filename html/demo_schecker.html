@@ -211,7 +211,9 @@
             var pp_time = 1000;
             var connected = false;
 
+            var send_gyr = true;
 
+            var power_max = 1300;
 
 
             $(function()
@@ -223,7 +225,7 @@
             function connect()
             {
                 set_status_message("Connecting...", "darkyellow");
-                ws = new WebSocket("ws://192.168.0.67/ws");        
+                ws = new WebSocket("ws://192.168.0.35/ws");        
 
                 ws.onopen = on_open;
                 ws.onmessage = on_msg;
@@ -301,6 +303,17 @@
                 /* Prozentualer Wert in einem Label anzeigen */
                 var power = parseInt((value/power_max)*100);
                 $('#sliderRevSliderPerc').html(power + "%"); 
+                
+                if(send_gyr)
+                {
+                    ws.send("gyr" + power);
+                    send_gyr = false;
+
+                    setTimeout(function() 
+                    {
+                        send_gyr = true;
+                    }, 50);
+                }
                 
                 /* Flag für Übertragung setzen */
                 has_changed = true;
