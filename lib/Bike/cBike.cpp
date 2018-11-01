@@ -23,7 +23,7 @@ cBike::cBike(byte gyroPWMPin)
 
 void cBike::run()
 {
-     _gyro.setMotorfreigabe(true); //das war ich und muss es wieder raus nehmen!!!!!
+    cLenkermotoransteuerung Lenkermotor;
     // Anfangsstatus setzen
     _state = EBikeState::STARTING;
 
@@ -135,7 +135,7 @@ void cBike::run()
 
 void cBike::update()
 {
-   
+    
     while(Serial.available()) 
    {
        String read = Serial.readStringUntil('\n');

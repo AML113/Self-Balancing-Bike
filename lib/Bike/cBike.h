@@ -27,7 +27,7 @@ enum EBikeState
 };
 
 
-static int task_core = 0;
+//static int task_core = 0;
 
 
 

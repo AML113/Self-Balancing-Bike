@@ -1,5 +1,5 @@
 /* Autor: Julian Schweizerhof
-/* Name: cLenksensor.h */
+ Name: cLenksensor.h */
 
 
 
